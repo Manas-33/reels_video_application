@@ -120,7 +120,8 @@ class AddVideoPage extends StatelessWidget {
             ),
           ]),
         ),
-      )),
+      ),
+      ),
     );
   }
 }

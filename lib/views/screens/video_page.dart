@@ -2,12 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'package:reels_video_application/views/screens/comment_page.dart';
 import 'package:video_player/video_player.dart';
-
 import '../../controllers/video_provider.dart';
 import '../widgets/circle_animation.dart';
 import '../widgets/video_player_item.dart';
-
 
 class VideoPage extends StatelessWidget {
   VideoPage({super.key});
@@ -143,12 +142,16 @@ class VideoPage extends StatelessWidget {
                               Column(
                                 children: [
                                   InkWell(
-                                    onTap: () {},
-                                    // videoController.videoLikes(data.id),
+                                    onTap: () {
+                                      videoController.videoLikes(data.id);
+                                    },
                                     child: Icon(
                                       Icons.favorite,
                                       size: 33,
-                                      // color: data.likes.contains(videoController.user.email)? Colors.red:Colors.white ,
+                                      color: data.likes.contains(
+                                              videoController.user!.email)
+                                          ? Colors.red
+                                          : Colors.white,
                                     ),
                                   ),
                                   const SizedBox(height: 7),
@@ -162,7 +165,12 @@ class VideoPage extends StatelessWidget {
                               Column(
                                 children: [
                                   InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  CommentPage(id: data.id)));
+                                    },
                                     child: Icon(
                                       Icons.comment,
                                       size: 33,

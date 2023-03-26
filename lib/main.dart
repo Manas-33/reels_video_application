@@ -10,7 +10,6 @@ import 'package:reels_video_application/views/screens/home_page.dart';
 import 'package:reels_video_application/views/screens/login_page.dart';
 import 'package:get_it/get_it.dart';
 
-
 // void setUpLocator() {
 // // getIt.registerLazySingleton<GoogleSignInProvider>);
 //   GetIt.I.registerSingleton<GoogleSignInProvider>(GoogleSignInProvider());

@@ -1,7 +1,3 @@
-import 'dart:convert';
-import 'dart:html';
-
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class User {
 
   String name;
@@ -24,8 +20,4 @@ class User {
       'uid': uid,
     
   };
-
-  // static User fromSnap(DocumentSnapshot snap){
-  //   var snapshot = snap.data()
-  // }
 }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -13,8 +14,7 @@ class VideoProvider extends GetxController {
 
   List<Video> get videoList => _videoList.value;
 
-  // var user = GetIt.instance<GoogleSignInProvider>().user;
-
+ User? user=FirebaseAuth.instance.currentUser;
   @override
   void onInit() {
     super.onInit();
@@ -32,20 +32,21 @@ class VideoProvider extends GetxController {
     }));
   }
 
-  // videoLikes(String id) async {
-  //   DocumentSnapshot doc =
-  //       await FirebaseFirestore.instance.collection('videos').doc(id).get();
+  videoLikes(String id) async {
+    DocumentSnapshot doc =
+        await FirebaseFirestore.instance.collection('videos').doc(id).get();
 
-  //   var email = user.email;
-  //   if ((doc.data()! as dynamic)['likes'].contains(email)) {
-  //     await FirebaseFirestore.instance.collection('videos').doc(id).update({
-  //       'likes': FieldValue.arrayRemove([email])
-  //     });
-  //   } else {
-  //     await FirebaseFirestore.instance.collection('videos').doc(id).update({
-  //       'likes': FieldValue.arrayUnion([email]),
-  //     });
-  //   }
-  //   ;
-  // }
+    var email = user!.email;
+    if ((doc.data()! as dynamic)['likes'].contains(email)) {
+      await FirebaseFirestore.instance.collection('videos').doc(id).update({
+        'likes': FieldValue.arrayRemove([email])
+      });
+    } else {
+      await FirebaseFirestore.instance.collection('videos').doc(id).update({
+        'likes': FieldValue.arrayUnion([email]),
+      });
+    }
+    ;
+  }
+  
 }

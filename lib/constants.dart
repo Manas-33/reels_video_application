@@ -10,8 +10,8 @@ const borderColor = Colors.grey;
 
 List pages = [
   VideoPage(),
-  Center(child: Text("Search Screen")),
+  // Center(child: Text("Search Screen")),
   AddVideoPage(),
-  Center(child: Text("Messages Screen")),
+  // Center(child: Text("Messages Screen")),
   ProfilePage(),
 ];

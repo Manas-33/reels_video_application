@@ -7,6 +7,8 @@ import 'package:reels_video_application/controllers/provider/upload_video.dart';
 import 'package:reels_video_application/views/widgets/custom_text_field.dart';
 import 'package:video_player/video_player.dart';
 
+import '../../constants.dart';
+
 class ConfirmPage extends StatefulWidget {
   final File videoFile;
   final String videoPath;
@@ -46,6 +48,11 @@ class _ConfirmPageState extends State<ConfirmPage> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: backgroundColor,
+        leading: BackButton(color: secondaryColor),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -82,22 +89,71 @@ class _ConfirmPageState extends State<ConfirmPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    ElevatedButton(
-                        onPressed: () {
+                    // ElevatedButton(
+                    //     onPressed: () {
+                    //       final x = Provider.of<UploadVideoProvider>(context,
+                    //           listen: false);
+                    //       x.uploadVideo(_songNameController.text,
+                    //           widget.videoPath, _captionController.text);
+                    //     },
+                    //     child: Text(
+                    //       "Publish!",
+                    //       style: TextStyle(fontSize: 17),
+                    //     )),
+                    const SizedBox(
+                      height: 7,
+                    ),
+                    Center(
+                      child: InkWell(
+                        onTap: () {
                           final x = Provider.of<UploadVideoProvider>(context,
                               listen: false);
                           x.uploadVideo(_songNameController.text,
                               widget.videoPath, _captionController.text);
                         },
-                        child: Text(
-                          "Publish!",
-                          style: TextStyle(fontSize: 17),
-                        )),
-                    IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: Icon(Icons.arrow_back_ios_new_rounded))
+                        child: Container(
+                          width: 200,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              color: secondaryColor,
+                              borderRadius: BorderRadius.circular(7)),
+                          child: Stack(children: [
+                            Container(
+                              margin: const EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                  color: secondaryColor,
+                                  borderRadius: BorderRadius.circular(7)),
+                            ),
+                            Container(
+                              margin: const EdgeInsets.only(right: 10),
+                              decoration: BoxDecoration(
+                                  color: Colors.cyan,
+                                  borderRadius: BorderRadius.circular(7)),
+                            ),
+                            Center(
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                height: double.infinity,
+                                width: 190,
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(7)),
+                                child: const Center(
+                                  child: Text(
+                                    "Publish!",
+                                    style: TextStyle(
+                                        color: backgroundColor,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ]),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 15),
                   ]),
             )
           ],
