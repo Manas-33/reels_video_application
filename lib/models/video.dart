@@ -15,6 +15,7 @@ class Video {
   String videoUrl;
   String thumbnailUrl;
   String profilePhoto;
+  String email;
   Video({
     required this.username,
     required this.uid,
@@ -27,6 +28,7 @@ class Video {
     required this.videoUrl,
     required this.thumbnailUrl,
     required this.profilePhoto,
+    required this.email,
   });
 
   Map<String, dynamic> toJson() => {
@@ -41,6 +43,7 @@ class Video {
         "videoUrl": videoUrl,
         "thumbnailUrl": thumbnailUrl,
         "profilePhoto": profilePhoto,
+        "email": email,
       };
 
   static Video fromSnap(DocumentSnapshot snap) {
@@ -57,8 +60,46 @@ class Video {
       caption: snapshot['caption'],
       videoUrl: snapshot['videoUrl'],
      profilePhoto: snapshot['profilePhoto'],
-      thumbnailUrl: snapshot['thumbnailUrl'],
+      thumbnailUrl: snapshot['thumbnailUrl'], 
+      email: snapshot['email'],
     );
   }
 
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'username': username,
+      'uid': uid,
+      'id': id,
+      'likes': likes,
+      'commentCount': commentCount,
+      'shareCount': shareCount,
+      'songName': songName,
+      'caption': caption,
+      'videoUrl': videoUrl,
+      'thumbnailUrl': thumbnailUrl,
+      'profilePhoto': profilePhoto,
+      "email": email,
+    };
+  }
+
+  factory Video.fromMap(Map<String, dynamic> map) {
+    return Video(username: map['username'] as String,
+      uid: map['uid'] as String,
+      id: map['id'] as String,
+      commentCount: map['commentCount'] as int,
+      shareCount: map['shareCount'] as int,
+      songName: map['songName'] as String,
+      caption: map['caption'] as String,
+      videoUrl: map['videoUrl'] as String,
+      thumbnailUrl: map['thumbnailUrl'] as String,
+      profilePhoto: map['profilePhoto'] as String,
+      email: map['email'] as String,
+      likes: List.from((map['likes'] as List),
+    ));
+  }
+
+  // String toJson() => json.encode(toMap());
+
+  factory Video.fromJson(String source) => Video.fromMap(json.decode(source) as Map<String, dynamic>);
 }

@@ -59,6 +59,7 @@ class UploadVideoProvider extends ChangeNotifier {
           caption: caption,
           videoUrl: videoUrl,
           thumbnailUrl: thumbnailUrl,
+          email: (userDoc.data()! as Map<String, dynamic>)['email'],
           profilePhoto:
               (userDoc.data()! as Map<String, dynamic>)['profilePhoto']);
 

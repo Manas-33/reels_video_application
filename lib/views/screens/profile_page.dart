@@ -18,7 +18,7 @@ class ProfilePage extends StatelessWidget {
                 onPressed: () {
                   value.logOut();
                 },
-                child: Text("Log-Out"))
+                child: Text("Log-Out")),
           ]),
         ),
       ),

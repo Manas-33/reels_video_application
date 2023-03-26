@@ -8,7 +8,7 @@ const backgroundColor = Colors.black;
 var secondaryColor = Colors.red[400];
 const borderColor = Colors.grey;
 
-const pages = [
+List pages = [
   VideoPage(),
   Center(child: Text("Search Screen")),
   AddVideoPage(),

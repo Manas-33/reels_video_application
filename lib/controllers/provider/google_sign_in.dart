@@ -20,16 +20,20 @@ class GoogleSignInProvider extends ChangeNotifier {
       final googleAuth = await googleUser.authentication;
       final credential = GoogleAuthProvider.credential(
           accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
-      UserCredential userCredential=await FirebaseAuth.instance.signInWithCredential(credential);
-      User? person=userCredential.user;
-
-      if(person!=null){
-        if(userCredential.additionalUserInfo!.isNewUser){
-          await FirebaseFirestore.instance.collection('users').doc(person.uid).set({
-            'name':person.displayName,
-            'email':person.email,
-            'profilePhoto':person.photoURL,
-            'uid':person.uid
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithCredential(credential);
+      User? person = userCredential.user;
+      
+      if (person != null) {
+        if (userCredential.additionalUserInfo!.isNewUser) {
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(person.uid)
+              .set({
+            'name': person.displayName,
+            'email': person.email,
+            'profilePhoto': person.photoURL,
+            'uid': person.uid,
           });
         }
       }
