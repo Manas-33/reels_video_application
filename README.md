@@ -9,6 +9,8 @@ Reels Video Application is a Flutter project that allows users to create and sha
 - Video Recording: Users can record short videos using their phone camera or upload existing videos from their device.
 
 - Video Sharing: Users can share their videos with other users on the app.
+- Like: Users can like videos posted by other users.
+- Commenting: Users can comment on videos posted by other users.
 
 
 
