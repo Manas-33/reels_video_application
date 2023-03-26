@@ -2,6 +2,8 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:reels_video_application/controllers/provider/upload_video.dart';
 import 'package:reels_video_application/views/widgets/custom_text_field.dart';
 import 'package:video_player/video_player.dart';
 
@@ -20,8 +22,8 @@ class ConfirmPage extends StatefulWidget {
 
 class _ConfirmPageState extends State<ConfirmPage> {
   late VideoPlayerController controller;
-  TextEditingController songNameController = TextEditingController();
-  TextEditingController captionController = TextEditingController();
+  TextEditingController _songNameController = TextEditingController();
+  TextEditingController _captionController = TextEditingController();
   @override
   void initState() {
     // TODO: implement initState
@@ -33,6 +35,13 @@ class _ConfirmPageState extends State<ConfirmPage> {
     controller.play();
     controller.setVolume(1);
     controller.setLooping(true);
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    controller.dispose();
   }
 
   Widget build(BuildContext context) {
@@ -57,7 +66,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
                         width: MediaQuery.of(context).size.width,
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         child: CustomTextField(
-                            songNameController: songNameController,
+                            songNameController: _songNameController,
                             labelText: "Song Name",
                             icon: Icons.music_note)),
                     const SizedBox(
@@ -67,18 +76,28 @@ class _ConfirmPageState extends State<ConfirmPage> {
                         width: MediaQuery.of(context).size.width,
                         margin: const EdgeInsets.symmetric(horizontal: 10),
                         child: CustomTextField(
-                            songNameController: captionController,
+                            songNameController: _captionController,
                             labelText: "Caption",
                             icon: Icons.format_quote_rounded)),
                     const SizedBox(
                       height: 10,
                     ),
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          final x = Provider.of<UploadVideoProvider>(context,
+                              listen: false);
+                          x.uploadVideo(_songNameController.text,
+                              widget.videoPath, _captionController.text);
+                        },
                         child: Text(
                           "Publish!",
                           style: TextStyle(fontSize: 17),
-                        ))
+                        )),
+                    IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: Icon(Icons.arrow_back_ios_new_rounded))
                   ]),
             )
           ],

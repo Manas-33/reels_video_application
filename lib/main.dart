@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:reels_video_application/constants.dart';
 import 'package:reels_video_application/controllers/provider/google_sign_in.dart';
+import 'package:reels_video_application/controllers/provider/upload_video.dart';
+import 'package:reels_video_application/controllers/video_provider.dart';
 import 'package:reels_video_application/views/screens/home_page.dart';
 import 'package:reels_video_application/views/screens/login_page.dart';
 
@@ -20,28 +22,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => GoogleSignInProvider())
+        ChangeNotifierProvider(create: (context) => GoogleSignInProvider()),
+        ChangeNotifierProvider(create: (context) => UploadVideoProvider()),
+        ChangeNotifierProvider(create: (context) => VideoProvider())
       ],
       child: MaterialApp(
         title: "Reels App",
         debugShowCheckedModeBanner: false,
         theme:
             ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor),
-        home:  Scaffold(
+        home: Scaffold(
           body: StreamBuilder<User?>(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, snapshot) {
-              if(snapshot.connectionState==ConnectionState.waiting){
-                return CircularProgressIndicator(color: secondaryColor,);
-              }else if(snapshot.hasData) {
-                return const HomePage();
-              }else if(snapshot.hasError) {
-                return (const Text("There was an Error!"));
-              }else{
-              return const LoginPage();
-              }
-            }
-          ),
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator(
+                    color: secondaryColor,
+                  );
+                } else if (snapshot.hasData) {
+                  return const HomePage();
+                } else if (snapshot.hasError) {
+                  return (const Text("There was an Error!"));
+                } else {
+                  return const LoginPage();
+                }
+              }),
         ),
       ),
     );
