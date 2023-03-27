@@ -19,11 +19,11 @@ class CommentPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     controller.updatePostId(id);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: backgroundColor,
-        leading: BackButton(color: secondaryColor),
-        centerTitle: true,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: backgroundColor,
+      //   leading: BackButton(color: secondaryColor),
+      //   centerTitle: true,
+      // ),
       body: SingleChildScrollView(
         child: SizedBox(
           width: size.width,
@@ -52,8 +52,8 @@ class CommentPage extends StatelessWidget {
                             ),
                             Text(
                               timeAgo.format(comment.datePublished.toDate()),
-                              style:
-                                  const TextStyle(fontSize: 12, color: Colors.white),
+                              style: const TextStyle(
+                                  fontSize: 12, color: Colors.white),
                             ),
                           ],
                         ),
@@ -79,7 +79,7 @@ class CommentPage extends StatelessWidget {
                     ),
                     decoration: const InputDecoration(
                       labelText: "Comment",
-                      labelStyle:  TextStyle(
+                      labelStyle: TextStyle(
                           fontSize: 18,
                           color: Colors.white,
                           fontWeight: FontWeight.w500),
