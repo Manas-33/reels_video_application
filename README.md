@@ -1,6 +1,6 @@
-# Reels Video Application
+# Reel-It
 
-Reels Video Application is a Flutter project that allows users to create and share short videos with others, similar to the popular social media app Instagram's "Reels" feature. The application uses Firebase for authentication, storage, and database. This project is available on Github at https://github.com/Manas-33/reels_video_application.
+Reel-It is a Flutter project that allows users to create and share short videos with others, similar to the popular social media app Instagram's "Reels" feature. The application uses Firebase for authentication, storage, and database. This project is available on Github at https://github.com/Manas-33/reels_video_application.
 
 ## Features
 
