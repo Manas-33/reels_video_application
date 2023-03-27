@@ -11,16 +11,45 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     User? user = FirebaseAuth.instance.currentUser;
-    var url = 'https://${user!.photoURL}';
+    var url = '${user!.photoURL}';
 
     return Consumer<GoogleSignInProvider>(
       builder: (context, value, child) => Scaffold(
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            // Image(image: NetworkImage(url)),
+            Stack(children: [
+              Container(
+                // width: 40,
+                // height: 40,
+                padding: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                    // color: Colors.white,
+                    gradient:const  LinearGradient(
+                      colors: [Colors.red, Colors.cyan],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                    ),
+                    borderRadius: BorderRadius.circular(25)),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(25),
+                    child: Image(
+                      image: NetworkImage(url),
+                      fit: BoxFit.cover,
+                    )),
+              ),
+              // ClipRRect(
+              //   borderRadius: BorderRadius.circular(45),
+              //   child: Image(
+              //     image: NetworkImage(url),
+              //   ),
+              // ),
+            ]),
+            const SizedBox(
+              height: 20,
+            ),
             Text(
               "Hi! ${user.displayName}",
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontSize: 22,
                   fontWeight: FontWeight.w500),

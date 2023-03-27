@@ -19,6 +19,11 @@ class CommentPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     controller.updatePostId(id);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: backgroundColor,
+        leading: BackButton(color: secondaryColor),
+        centerTitle: true,
+      ),
       body: SingleChildScrollView(
         child: SizedBox(
           width: size.width,
@@ -48,14 +53,14 @@ class CommentPage extends StatelessWidget {
                             Text(
                               timeAgo.format(comment.datePublished.toDate()),
                               style:
-                                  TextStyle(fontSize: 12, color: Colors.white),
+                                  const TextStyle(fontSize: 12, color: Colors.white),
                             ),
                           ],
                         ),
                         subtitle: Row(children: [
                           Text(
                             comment.comment,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 15,
                                 color: Colors.white,
                                 fontWeight: FontWeight.w400),
@@ -64,17 +69,17 @@ class CommentPage extends StatelessWidget {
                       );
                     }));
               })),
-              Divider(),
+              const Divider(),
               ListTile(
                 title: TextFormField(
                     controller: _commentController,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
                     ),
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       labelText: "Comment",
-                      labelStyle: TextStyle(
+                      labelStyle:  TextStyle(
                           fontSize: 18,
                           color: Colors.white,
                           fontWeight: FontWeight.w500),

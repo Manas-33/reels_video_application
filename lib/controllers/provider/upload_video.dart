@@ -1,13 +1,9 @@
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:reels_video_application/models/video.dart';
 import 'package:video_compress_ds/video_compress_ds.dart';
-
-import 'google_sign_in.dart';
 
 class UploadVideoProvider extends ChangeNotifier {
   _compressVideo(String videoPath) async {
@@ -69,11 +65,24 @@ class UploadVideoProvider extends ChangeNotifier {
           .set(
             video.toJson(),
           );
-
-      SnackBar(content: Text("Successfully Uploaded!"));
+      NavigationService().goBack();
+      NavigationService().goBack();
     } catch (e) {
       SnackBar(content: Text("Error! ${e.toString()}"));
     }
     notifyListeners();
+  }
+}
+
+class NavigationService {
+  static final NavigationService _instance = NavigationService._internal();
+  NavigationService._internal();
+
+  factory NavigationService() => _instance;
+
+  final GlobalKey<NavigatorState> navigationKey = GlobalKey<NavigatorState>();
+
+  dynamic goBack([dynamic popValue]) {
+    return navigationKey.currentState?.pop(popValue);
   }
 }

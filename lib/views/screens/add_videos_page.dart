@@ -29,11 +29,11 @@ class AddVideoPage extends StatelessWidget {
                   onPressed: () => pickVideo(ImageSource.gallery, context),
                   child: Row(
                     children: [
-                      Icon(Icons.image),
+                      const Icon(Icons.image),
                       Container(
                         width: 20,
                       ),
-                      Text(
+                      const Text(
                         "Gallery",
                         style: TextStyle(fontSize: 17),
                       )
@@ -45,11 +45,11 @@ class AddVideoPage extends StatelessWidget {
                   onPressed: () => pickVideo(ImageSource.camera, context),
                   child: Row(
                     children: [
-                      Icon(Icons.camera_alt),
+                      const Icon(Icons.camera_alt),
                       Container(
                         width: 20,
                       ),
-                      Text(
+                      const Text(
                         "Record a Video",
                         style: TextStyle(fontSize: 17),
                       )
@@ -61,11 +61,11 @@ class AddVideoPage extends StatelessWidget {
                   onPressed: () => Navigator.of(context).pop(),
                   child: Row(
                     children: [
-                      Icon(Icons.cancel),
+                      const Icon(Icons.cancel),
                       Container(
                         width: 20,
                       ),
-                      Text(
+                      const Text(
                         "Cancel",
                         style: TextStyle(fontSize: 17),
                       )
@@ -80,47 +80,47 @@ class AddVideoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: InkWell(
-        onTap: () => showOptionsDialog(context),
-        child: Container(
-          width: 200,
-          height: 50,
-          decoration: BoxDecoration(
-              color: secondaryColor, borderRadius: BorderRadius.circular(7)),
-          child: Stack(children: [
-            Container(
-              margin: const EdgeInsets.only(left: 10),
-              decoration: BoxDecoration(
-                  color: secondaryColor,
-                  borderRadius: BorderRadius.circular(7)),
-            ),
-            Container(
-              margin: const EdgeInsets.only(right: 10),
-              decoration: BoxDecoration(
-                  color: Colors.cyan, borderRadius: BorderRadius.circular(7)),
-            ),
-            Center(
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                height: double.infinity,
-                width: 190,
+        child: InkWell(
+          onTap: () => showOptionsDialog(context),
+          child: Container(
+            width: 200,
+            height: 50,
+            decoration: BoxDecoration(
+                color: secondaryColor, borderRadius: BorderRadius.circular(7)),
+            child: Stack(children: [
+              Container(
+                margin: const EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: secondaryColor,
                     borderRadius: BorderRadius.circular(7)),
-                child: const Center(
-                  child: Text(
-                    "Add Video",
-                    style: TextStyle(
-                        color: backgroundColor,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w500),
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 10),
+                decoration: BoxDecoration(
+                    color: Colors.cyan, borderRadius: BorderRadius.circular(7)),
+              ),
+              Center(
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  height: double.infinity,
+                  width: 190,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(7)),
+                  child: const Center(
+                    child: Text(
+                      "Add Video",
+                      style: TextStyle(
+                          color: backgroundColor,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w500),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ]),
+            ]),
+          ),
         ),
-      ),
       ),
     );
   }

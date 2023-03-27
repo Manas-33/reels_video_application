@@ -28,7 +28,6 @@ class _ConfirmPageState extends State<ConfirmPage> {
   TextEditingController _captionController = TextEditingController();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     setState(() {
       controller = VideoPlayerController.file(widget.videoFile);
@@ -41,7 +40,6 @@ class _ConfirmPageState extends State<ConfirmPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     controller.dispose();
   }
@@ -63,7 +61,7 @@ class _ConfirmPageState extends State<ConfirmPage> {
               height: MediaQuery.of(context).size.height / 1.5,
               child: VideoPlayer(controller),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Column(
@@ -89,17 +87,6 @@ class _ConfirmPageState extends State<ConfirmPage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    // ElevatedButton(
-                    //     onPressed: () {
-                    //       final x = Provider.of<UploadVideoProvider>(context,
-                    //           listen: false);
-                    //       x.uploadVideo(_songNameController.text,
-                    //           widget.videoPath, _captionController.text);
-                    //     },
-                    //     child: Text(
-                    //       "Publish!",
-                    //       style: TextStyle(fontSize: 17),
-                    //     )),
                     const SizedBox(
                       height: 7,
                     ),

@@ -41,7 +41,7 @@ class GoogleSignInProvider extends ChangeNotifier {
       const SnackBar(
         content: Text("There was an error!"),
       );
-      print(e.toString());
+      // print(e.toString());
     }
     notifyListeners();
   }

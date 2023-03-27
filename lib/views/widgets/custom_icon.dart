@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reels_video_application/constants.dart';
 
 class CustomIcon extends StatelessWidget {
   const CustomIcon({super.key});
@@ -24,11 +23,11 @@ class CustomIcon extends StatelessWidget {
         ),
         Center(
           child: Container(
-            child:Icon(Icons.add, color: Colors.black,size: 20,),
             height: double.infinity,
             width: 38,
             decoration: BoxDecoration(
                 color:Colors.white, borderRadius: BorderRadius.circular(7)),
+            child:const Icon(Icons.add, color: Colors.black,size: 20,),
           ),
         ),
         

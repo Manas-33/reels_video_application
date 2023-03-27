@@ -5,10 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:reels_video_application/constants.dart';
 import 'package:reels_video_application/controllers/provider/google_sign_in.dart';
 import 'package:reels_video_application/controllers/provider/upload_video.dart';
-import 'package:reels_video_application/controllers/video_provider.dart';
 import 'package:reels_video_application/views/screens/home_page.dart';
 import 'package:reels_video_application/views/screens/login_page.dart';
-import 'package:get_it/get_it.dart';
 
 // void setUpLocator() {
 // // getIt.registerLazySingleton<GoogleSignInProvider>);
@@ -35,6 +33,7 @@ class MyApp extends StatelessWidget {
         //     create: (_) => VideosModel()..fetchVideos())
       ],
       child: MaterialApp(
+        navigatorKey: NavigationService().navigationKey,
         title: "Reels App",
         debugShowCheckedModeBanner: false,
         theme:

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:reels_video_application/constants.dart';
 import '../../controllers/provider/google_sign_in.dart';
 
 class LoginPage extends StatelessWidget {
@@ -9,38 +8,55 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          body: Padding(
-        padding: const EdgeInsets.fromLTRB(10, 8, 10, 8),
-        child: Container(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-            Text(
-              "Video Application",
-              style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.w300,
-                  color: secondaryColor),
-            ),
-            const Text(
-              "Hey there, Welcome Back",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
-            ),
-            const Text(
-              "Login to your account to continue",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w300),
+        body: Padding(
+      padding: const EdgeInsets.all(20),
+      child: Container(
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(
+              'assets/images/video.png',
+              height: 250,
             ),
             const SizedBox(
               height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text(
+                  'Welcome to ',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 28),
+                ),
+                // !
+                Text(
+                  ' Reel-It!',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.red, fontSize: 28),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              'Capture your moments and share them with the world - Reel It!',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white, fontSize: 16),
+            ),
+            const SizedBox(
+              height: 30,
             ),
             ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
-                    minimumSize: const Size(double.infinity, 50)),
+                    minimumSize: const Size(double.infinity, 50),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25))),
                 onPressed: () {
-                  final provider=Provider.of<GoogleSignInProvider>(context,listen: false);
+                  final provider =
+                      Provider.of<GoogleSignInProvider>(context, listen: false);
                   provider.googleLogin();
                 },
                 icon: SizedBox(
@@ -50,11 +66,11 @@ class LoginPage extends StatelessWidget {
                       'http://pngimg.com/uploads/google/google_PNG19635.png',
                       fit: BoxFit.cover),
                 ),
-                label:
-                    const Text("Sign In With Google", style: TextStyle(fontSize: 16))),
-          ]),
+                label: const Text("Sign In With Google",
+                    style: TextStyle(fontSize: 16))),
+          ],
         ),
-      )
-    );
+      ),
+    ));
   }
 }
