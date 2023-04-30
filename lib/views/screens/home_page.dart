@@ -40,6 +40,7 @@ class _HomePageState extends State<HomePage> {
                 icon: Icons.person,
                 text: 'Profile',
               ),
+              
             ],
             onTabChange: (index) {
               setState(() {

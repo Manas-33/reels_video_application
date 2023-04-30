@@ -45,7 +45,6 @@ class CommentController extends GetxController {
             .collection('comments')
             .get();
         int len = allDocs.docs.length;
-
         Comment comment = Comment(
             username: (userDoc.data()! as Map<String, dynamic>)['name'],
             comment: text.trim(),

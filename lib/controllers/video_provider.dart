@@ -41,4 +41,5 @@ class VideoProvider extends GetxController {
       });
     }
   }
+  
 }
